@@ -7,13 +7,16 @@ const useStyles = makeStyles({
         width: '100%',
         maxWidth: 900,
     },
+    subheading: {
+        fontFamily: 'Druk'
+    }
 });
 
 const Home = () => {
     const classes = useStyles();
     return (
         <div className={classes.root}>
-            <Typography variant='h1'>Your Fashion Career starts now!</Typography>
+            <Typography variant='h1' className={classes.subheading}>Your Fashion Career starts now!</Typography>
         </div>
     );
 };
