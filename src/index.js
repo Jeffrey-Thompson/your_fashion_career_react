@@ -10,7 +10,16 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       main: '#ede9ed'
+    },
+    secondary: {
+      main: '#c2b7fa'
     }
+  },
+  typography: {
+    fontFamily: [
+      'Montserrat',
+      'Roboto'
+    ]
   }
 })
 
