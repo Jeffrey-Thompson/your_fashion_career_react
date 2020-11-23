@@ -2,15 +2,16 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
         maxWidth: 900,
     },
     subheading: {
-        fontFamily: 'Druk'
+        fontFamily: 'Druk',
+        color: theme.palette.text.primary
     }
-});
+}));
 
 const Home = () => {
     const classes = useStyles();

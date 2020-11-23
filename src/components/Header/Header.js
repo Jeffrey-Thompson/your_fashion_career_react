@@ -12,15 +12,15 @@ import MenuIcon from '@material-ui/icons/Menu';
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        background: theme.palette.primary,
-        color: 'black'
+        background: theme.palette.primary
     },
     menuButton: {
         marginRight: theme.spacing(2),
     },
     title: {
         flexGrow: 1,
-        fontFamily: 'DrukTextWide'
+        fontFamily: 'DrukTextWide',
+        color: theme.palette.text.primary
     },
 }));
 

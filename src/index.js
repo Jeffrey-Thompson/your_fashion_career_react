@@ -13,13 +13,16 @@ const theme = createMuiTheme({
     },
     secondary: {
       main: '#c2b7fa'
+    },
+    text: {
+      primary: '#404041'
     }
   },
   typography: {
     fontFamily: [
       'Montserrat',
       'Roboto'
-    ]
+    ].join(','),
   }
 })
 
