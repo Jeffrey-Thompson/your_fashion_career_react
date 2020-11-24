@@ -28,7 +28,7 @@ const Header = () => {
     const classes = useStyles();
     return (
         <Box className={classes.root} borderTop={5} borderColor='secondary.main'>
-            <AppBar position='sticky' >
+            <AppBar position='sticky' elevation={0}>
                 <Toolbar >
                     <Typography variant='h6' className= {classes.title}>
                         YOUR FASHION CAREER
