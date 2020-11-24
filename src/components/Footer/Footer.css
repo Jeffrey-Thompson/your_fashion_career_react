@@ -2,8 +2,12 @@
     list-style-type: none;
     display: flex;
     justify-content: space-around;
+    margin: 0 auto;
+    padding: 0;
 }
 
 .link_list li {
     display: inline;
+    font-family: 'Montserrat';
+    color: #404041;
 }
