@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         flexGrow: 1,
-        fontFamily: 'DrukTextWide',
+        fontFamily: 'Druk',
         color: theme.palette.text.primary
     },
     links: {
