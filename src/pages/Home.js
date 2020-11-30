@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
         width: '80ch',
         marginTop: '10px',
         border: `3px solid ${theme.palette.text.primary}`,
-        background: 'white'
+        background: 'white',
     },
     button: {
         color: 'white',
