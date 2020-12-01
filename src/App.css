@@ -1,9 +1,5 @@
-@font-face {
-    font-family: DrukTextWide;
-    src: url(./fonts/DrukTextWide-Bold.otf);
-}
 
 @font-face {
     font-family: Druk;
-    src: url(./fonts/Druk-Bold.otf);
+    src: url(./fonts/Druk-Bold.woff);
 }
