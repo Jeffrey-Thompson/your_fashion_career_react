@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 const Footer = () => {
     const classes = useStyles();
     return (
-        <AppBar position='fixed' elevation={0} className={classes.root}>
+        <AppBar position='sticky' elevation={0} className={classes.root}>
             <Toolbar>
                 <Grid container>
                     <Grid item xs={12}>
