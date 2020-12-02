@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Link from '@material-ui/core/Link';
+import TemporaryDrawer from '../Sidebar/Sidebar'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -24,7 +25,13 @@ const useStyles = makeStyles((theme) => ({
     },
     links: {
         color: theme.palette.text.primary
-    }
+    },
+    list: {
+        width: 250,
+      },
+      fullList: {
+        width: 'auto',
+      },
 }));
 
 const Header = () => {
@@ -42,7 +49,7 @@ const Header = () => {
                         </Link>
                     </Button>
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <MenuIcon />
+                        <TemporaryDrawer/>
                     </IconButton>
                 </Toolbar>
             </AppBar>
