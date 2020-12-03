@@ -1,6 +1,5 @@
 import React from 'react';
 import { Typography, Box, TextField, Button, Radio, RadioGroup, FormControl, FormControlLabel, Grid, Slider, Checkbox } from '@material-ui/core';
-import Rating from '@material-ui/lab/Rating';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -33,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: '20px'
     },
     categories: {
-        background: theme.palette.primary.main
+        background: theme.palette.primary.main,
     },
     inputs: {
         width: '100%'
@@ -131,7 +130,7 @@ const Rate = () => {
                 <Grid container>
                     <Grid item xs={12}>
                         <Typography variant='h6' className={classes.subheading}>Company</Typography>
-                        <TextField id='name' name='name' variant='outlined' className={classes.inputs}/>
+                        <TextField id='name' name='name' variant='filled' className={classes.inputs}/>
                         <Typography variant='h6' className={classes.subheading}>Are you a current or former employee?</Typography>
                         <FormControl component='fieldset'>
                             <RadioGroup name='employee' value={employee} onChange={handleEmployee} className={classes.radio}>
@@ -140,79 +139,85 @@ const Rate = () => {
                             </RadioGroup>
                         </FormControl>
                         <Typography variant='h6' className={classes.subheading}>Job Title</Typography>
-                        <TextField id='title' name='title' variant='outlined' className={classes.inputs}/>
+                        <TextField id='title' name='title' variant='filled' className={classes.inputs}/>
                     </Grid>
                     <Grid item xs={12}>
                         <Typography variant='h6' className={classes.subheading}>Categories</Typography>
-                        <Box className={classes.categories}>
-                            <Grid container >
-                                <Grid item xs={1}></Grid>
-                                <Grid item xs={4} >
+                        <Box className={classes.categories} >
+                            <Grid container id='categories'>
+                                <Grid item sm={1}></Grid>
+                                <Grid item sm={4} xs={12}>
                                     <Typography variant='h6' gutterBottom>Career development</Typography>
                                     <IOSSlider name='development' aria-label="ios slider" step={1} marks={marks} min={1} max={5} defaultValue={3}  />
                                 </Grid>
-                                <Grid item xs={2}></Grid>
-                                <Grid item xs={4}>
+                                <Grid item sm={2} ></Grid>
+                                <Grid item sm={4} xs={12}>
                                     <Typography variant='h6' gutterBottom>Growth opportunities</Typography>
                                     <IOSSlider name='growth' aria-label="ios slider" step={1} marks={marks} min={1} max={5} defaultValue={3} />
                                 </Grid>
-                                <Grid item xs={1}></Grid>
-                                <Grid item xs={1}></Grid>
-                                <Grid item xs={4}>
+                                <Grid item sm={1}></Grid>
+                                <Grid item sm={1}></Grid>
+                                <Grid item sm={4} xs={12}>
                                     <Typography variant='h6' gutterBottom>Work-life balance</Typography>
                                     <IOSSlider name='workLife' aria-label="ios slider" step={1} marks={marks} min={1} max={5} defaultValue={3}  />
                                 </Grid>
-                                <Grid item xs={2}></Grid>
-                                <Grid item xs={4}>
+                                <Grid item sm={2} ></Grid>
+                                
+                                <Grid item sm={4} xs={12}>
                                     <Typography variant='h6' gutterBottom>Diversity of workforce</Typography>
                                     <IOSSlider name='diversity' aria-label="ios slider" step={1} marks={marks} min={1} max={5} defaultValue={3}  />
                                 </Grid>
-                                <Grid item xs={1}></Grid>
-                                <Grid item xs={1}></Grid>
-                                <Grid item xs={4}>
+                                <Grid item sm={1}></Grid>
+                                <Grid item sm={1}></Grid>
+                                <Grid item sm={4} xs={12}>
                                     <Typography variant='h6' gutterBottom>Salary & benefits</Typography>
                                     <IOSSlider name='salary' aria-label="ios slider" step={1} marks={marks} min={1} max={5} defaultValue={3} />
                                 </Grid>
-                                <Grid item xs={2}></Grid>
-                                <Grid item xs={4}>
+                                <Grid item sm={2} ></Grid>
+                                
+                                <Grid item sm={4} xs={12}>
                                     <Typography variant='h6' gutterBottom>Authenticity</Typography>
                                     <IOSSlider name='authenticity' aria-label="ios slider" step={1} marks={marks} min={1} max={5} defaultValue={3} />
                                 </Grid>
-                                <Grid item xs={1}></Grid>
-                                <Grid item xs={1}></Grid>
-                                <Grid item xs={4}>
+                                <Grid item sm={1}></Grid>
+                                <Grid item sm={1}></Grid>
+                                <Grid item sm={4} xs={12} >
                                     <Typography variant='h6' gutterBottom>Sustainable business practice</Typography>
                                     <IOSSlider name='sustainability' aria-label="ios slider" step={1} marks={marks} min={1} max={5} defaultValue={3} />
                                 </Grid>
-                                <Grid item xs={2}></Grid>
-                                <Grid item xs={4}>
+                                <Grid item sm={2} ></Grid>
+                                
+                                <Grid item sm={4} xs={12}>
                                     <Typography variant='h6' gutterBottom>Management</Typography>
                                     <IOSSlider name='management' aria-label="ios slider" step={1} marks={marks} min={1} max={5} defaultValue={3} />
                                 </Grid>
-                                <Grid item xs={1}></Grid>
-                                <Grid item xs={1}></Grid>
-                                <Grid item xs={4}>
+                                <Grid item sm={1}></Grid>
+                                <Grid item sm={1}></Grid>
+                                <Grid item sm={4} xs={12}>
                                     <Typography variant='h6' gutterBottom>Kindness</Typography>
                                     <IOSSlider name='treatment' aria-label="ios slider" step={1} marks={marks} min={1} max={5} defaultValue={3} />
                                 </Grid>
-                                <Grid item xs={2}></Grid>
-                                <Grid item xs={4}>
+                                <Grid item sm={2}></Grid>
+                                
+                                <Grid item sm={4} xs={12} >
                                     <Typography variant='h6' gutterBottom>Creative Freedom</Typography>
                                     <IOSSlider name='freedom' aria-label="ios slider" step={1} marks={marks} min={1} max={5} defaultValue={3} />
                                 </Grid>
-                                <Grid item xs={1}></Grid>
+                                <Grid item sm={1}></Grid>
                             </Grid>
                         </Box>
                     </Grid>
                     <Grid item xs={12}>
                         <Typography variant='h6' className={classes.subheading}>Review title</Typography>
-                        <TextField id='reviewTitle' name='reviewTitle' variant='outlined' className={classes.inputs}/>
+                        <TextField id='reviewTitle' name='reviewTitle' variant='filled' className={classes.inputs}/>
                         <Typography variant='h6' className={classes.subheading}>General comments</Typography>
-                        <TextField id='comments' name='comments' variant='outlined' multiline rows={5} className={classes.inputs}/>
+                        <TextField id='comments' name='comments' variant='filled' multiline rows={5} className={classes.inputs}/>
                     </Grid>
                 <FormControlLabel control={<Checkbox name="agree" required/>} label="I agree to Your Fashion Career's Terms of Use. I certify that this review is a truthful account of my experience with this company." />
                 </Grid>
-                <Button type='submit' variant='contained' className={classes.button}>Submit</Button>
+                <Box justifyContent='center' display='flex'>
+                    <Button type='submit' variant='contained' disableElevation className={classes.button}>Submit</Button>
+                </Box>
             </form>
         </Box>
     )
