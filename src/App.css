@@ -3,3 +3,10 @@
     font-family: Druk;
     src: url(./fonts/Druk-Bold.woff);
 }
+
+@media (max-width: 600px) {
+    #categories {
+        width: 80%;
+        margin: auto;
+    }
+}
