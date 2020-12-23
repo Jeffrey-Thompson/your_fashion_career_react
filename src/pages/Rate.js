@@ -9,7 +9,8 @@ const useStyles = makeStyles((theme) => ({
     subheading: {
         fontFamily: 'Druk',
         paddingTop: '5px',
-        marginTop: '20px'
+        marginTop: '20px',
+        fontSize: '48px'
     },
     stars: {
         display: 'flex',
@@ -130,7 +131,7 @@ const Rate = () => {
                 <Grid container>
                     <Grid item xs={12}>
                         <Typography variant='h6' className={classes.subheading}>Company</Typography>
-                        <TextField id='name' name='name' variant='filled' className={classes.inputs}/>
+                        <TextField id='name' name='name' variant='outlined' className={classes.inputs}/>
                         <Typography variant='h6' className={classes.subheading}>Are you a current or former employee?</Typography>
                         <FormControl component='fieldset'>
                             <RadioGroup name='employee' value={employee} onChange={handleEmployee} className={classes.radio}>
@@ -139,7 +140,7 @@ const Rate = () => {
                             </RadioGroup>
                         </FormControl>
                         <Typography variant='h6' className={classes.subheading}>Job Title</Typography>
-                        <TextField id='title' name='title' variant='filled' className={classes.inputs}/>
+                        <TextField id='title' name='title' variant='outlined' className={classes.inputs}/>
                     </Grid>
                     <Grid item xs={12}>
                         <Typography variant='h6' className={classes.subheading}>Categories</Typography>
@@ -209,9 +210,9 @@ const Rate = () => {
                     </Grid>
                     <Grid item xs={12}>
                         <Typography variant='h6' className={classes.subheading}>Review title</Typography>
-                        <TextField id='reviewTitle' name='reviewTitle' variant='filled' className={classes.inputs}/>
+                        <TextField id='reviewTitle' name='reviewTitle' variant='outlined' className={classes.inputs}/>
                         <Typography variant='h6' className={classes.subheading}>General comments</Typography>
-                        <TextField id='comments' name='comments' variant='filled' multiline rows={5} className={classes.inputs}/>
+                        <TextField id='comments' name='comments' variant='outlined' multiline rows={5} className={classes.inputs}/>
                     </Grid>
                 <FormControlLabel control={<Checkbox name="agree" required/>} label="I agree to Your Fashion Career's Terms of Use. I certify that this review is a truthful account of my experience with this company." />
                 </Grid>
