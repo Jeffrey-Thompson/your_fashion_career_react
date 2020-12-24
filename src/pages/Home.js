@@ -67,6 +67,7 @@ const Home = (props) => {
                     </form>
                 </Box>
             </Grid>
+            <Grid item style={{height: '20vh'}}></Grid>
         </Grid>
     );
 };
