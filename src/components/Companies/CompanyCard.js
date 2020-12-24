@@ -38,7 +38,8 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: 'Druk',
         borderRadius: '0px',
         borderWidth: '2px',
-        borderColor: theme.palette.text.primary
+        borderColor: theme.palette.text.primary,
+        width: '150px'
     }
 }));
 
@@ -71,7 +72,7 @@ const CompanyCard = (props) => {
                 </CardContent>
             </CardActionArea>
             <CardActions className={classes.buttons}>
-                <Button size='large' className={classes.buttonText} href={rateLink}><AddIcon></AddIcon> Leave a Review</Button>
+                <Button size='large' className={classes.buttonText} href={rateLink}><AddIcon className={classes.title}></AddIcon>Leave a Review</Button>
                 <Button size='large' variant='outlined' className={classes.buttonText} href={companyLink}>Read Reviews</Button>
             </CardActions>
         </Card>
