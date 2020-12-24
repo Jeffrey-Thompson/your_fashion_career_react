@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from "../pages/Home";
 import Rate from "../pages/Rate";
 import AllCompanies from "../pages/AllCompanies";
+import Signin from '../pages/Signin'
 
 const Routes = (props) => {
     return (
@@ -11,6 +12,7 @@ const Routes = (props) => {
             <Route exact path='/' component={Home} />
             <Route path='/:id/rate' component={Rate} />
             <Route path='/companies/' component={AllCompanies} />
+            <Route path='/signin' component={Signin}/>
             <Route path='*' render={() => <h1>Maybe your career has taken a wrong turn or maybe you just typed something wrong. Either way this page doesn't exist.</h1>} />
         </Switch>
     );

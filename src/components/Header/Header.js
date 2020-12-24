@@ -44,7 +44,7 @@ const Header = () => {
                         YOUR FASHION CAREER
                     </Typography>
                     <Button color='inherit'>
-                        <Link href='#' className={classes.links}>
+                        <Link href='/signin' className={classes.links}>
                             Sign In
                         </Link>
                     </Button>
