@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import AuthModel from '../models/AuthModel';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -35,8 +36,22 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const Home = () => {
+const Home = (props) => {
     const classes = useStyles();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log("Thing hit")
+
+    AuthModel.register({email, password}).then(response=>{
+      console.log(response)
+      if (response.status === 201) {
+        props.history.push("/dashboard")
+      } 
+    })
+  }
     return (
         <Grid container direction='column' justify='center' alignItems='center'>
             <Grid item style={{height: '20vh'}}></Grid>
@@ -44,9 +59,10 @@ const Home = () => {
                 <Box className={classes.root} border={2} >
                     <Typography variant='h3' className={classes.subheading}>What it's really like to work in fashion</Typography>
                     <Typography variant='h6'>Read and contribute reviews of fashion's top companies.</Typography>
-                    <form noValidate >
-                        <TextField className={classes.form} id='email' label='Create account with your email' variant='standard'/>
-                        <TextField type='password' className={classes.form} id='password' label='Password' variant='standard' /><br></br>
+                    <form noValidate onSubmit={handleSubmit}>
+                        <TextField className={classes.form} id='email' label='Create account with your email' variant='standard' onChange={(e) => setEmail(e.target.value)} value={email}/>
+                        <TextField type='password' className={classes.form} id='password' label='Password' variant='standard' onChange={(e) => setPassword(e.target.value)} value={password}/>
+                        <br></br>
                         <Button type='submit' variant='contained' className={classes.button} >Join Us</Button>
                     </form>
                 </Box>

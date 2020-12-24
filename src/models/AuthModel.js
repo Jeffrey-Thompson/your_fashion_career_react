@@ -1,7 +1,7 @@
 const URL = 'http://localhost:3001/auth'
 
 class AuthModel {
-    static signup = (user) => {
+    static register = (user) => {
         return fetch(`${URL}/register`,{
             method: "POST",
             headers:{
@@ -9,10 +9,6 @@ class AuthModel {
             },
             body: JSON.stringify(user)
         }).then(response => response.json());
-    }
-
-    static show = (collegeId) => {
-        return fetch(`${URL}/${collegeId}`).then(response => response.json());
     }
 }
 

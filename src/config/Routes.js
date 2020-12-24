@@ -8,7 +8,7 @@ const Routes = (props) => {
     return (
         <Switch>
             <Route exact path='/' component={Home} />
-            <Route path='/rate/:id' component={Rate} />
+            <Route path='/:id/rate' component={Rate} />
             <Route path='*' render={() => <h1>Maybe your career has taken a wrong turn or maybe you just typed something wrong. Either way this page doesn't exist.</h1>} />
         </Switch>
     );
