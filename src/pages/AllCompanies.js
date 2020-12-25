@@ -4,7 +4,9 @@ import useCompanies from "../hooks/useCompanies";
 import Skeleton from '@material-ui/lab/Skeleton';
 import Box  from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
-import { makeStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,16 +32,23 @@ const useStyles = makeStyles((theme) => ({
     },
     spacing: {
         marginBottom: '10px'
+    },
+    title: {
+        fontFamily: 'Druk'
+    },
+    refresh: {
+        float: 'right'
     }
 }));
 
 const AllCompanies = (props) => {
-    const [companies, fetchCompanies] = useCompanies();
+    const [companies] = useCompanies();
     const classes = useStyles();
 
     return (
         <>
-            <h1>All Companies Page</h1>
+            <Typography variant='h2' component='span' className={classes.title}>Search Companies</Typography>
+            <Button href='/companies/' className={classes.refresh}>Show all companies</Button>
             {companies.length ? <Companies data={companies} /> : 
             <>
                 <Card className={classes.root}>
