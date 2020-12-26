@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from 'react';
 import Companies from "../components/Companies/Companies";
 import Search from "../components/Companies/Search";
 import useCompanies from "../hooks/useCompanies";
@@ -44,8 +45,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AllCompanies = (props) => {
-    const [companies, fetchCompanies] = useCompanies();
+    const [companies] = useCompanies();
     const classes = useStyles();
+    const [filter, setFilter] = useState('');
     const types = function(companies) {
         const filtered = [];
         for(let i=0; i<companies.length; i++) {
@@ -85,12 +87,17 @@ const AllCompanies = (props) => {
     };
     const filteredLocations = locations(companies);
 
+    const handleSearchChange = (event) => {
+        console.log(event.target.value);
+        setFilter(event.target.value);
+    }
+
     return (
         <>
             <Typography variant='h2' component='span' className={classes.title}>Search Companies</Typography>
             <Button href='/companies/' className={classes.refresh} variant='outlined'>Show all companies</Button>
-            {companies.length ? <Search companies={companies} types={filteredTypes} locations={filteredLocations} /> : <Skeleton variant='rect' width={700} height={20} />}
-            {companies.length ? <Companies data={companies} /> : 
+            {companies.length ? <Search companies={companies} types={filteredTypes} locations={filteredLocations} handleSearchChange={handleSearchChange} /> : <Skeleton variant='rect' width={700} height={20} />}
+            {companies.length ? <Companies data={companies} filter={filter} /> : 
             <>
                 <Card className={classes.root}>
                     <Skeleton variant='rect' width={264} height={264} />
