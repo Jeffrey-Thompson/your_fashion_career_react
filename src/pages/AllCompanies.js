@@ -1,5 +1,6 @@
 import React from "react";
 import Companies from "../components/Companies/Companies";
+import Search from "../components/Companies/Search";
 import useCompanies from "../hooks/useCompanies";
 import Skeleton from '@material-ui/lab/Skeleton';
 import Box  from '@material-ui/core/Box';
@@ -37,18 +38,58 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: 'Druk'
     },
     refresh: {
-        float: 'right'
+        float: 'right',
+        marginTop: '20px'
     }
 }));
 
 const AllCompanies = (props) => {
-    const [companies] = useCompanies();
+    const [companies, fetchCompanies] = useCompanies();
     const classes = useStyles();
+    const types = function(companies) {
+        const filtered = [];
+        for(let i=0; i<companies.length; i++) {
+            let checked = false;
+
+            for(let j=0; j<filtered.length; j++) {
+                if (companies[i].type === filtered[j].type) {
+                    checked = true;
+                }
+            }
+
+            if (!checked) {
+                filtered.push(companies[i]);
+            }
+        }
+        
+        return filtered;
+    };
+    const filteredTypes = types(companies);
+    const locations = function(companies) {
+        const filtered = [];
+        for(let i=0; i<companies.length; i++) {
+            let checked = false;
+
+            for(let j=0; j<filtered.length; j++) {
+                if (companies[i].location === filtered[j].location) {
+                    checked = true;
+                }
+            }
+
+            if (!checked) {
+                filtered.push(companies[i]);
+            }
+        }
+        
+        return filtered;
+    };
+    const filteredLocations = locations(companies);
 
     return (
         <>
             <Typography variant='h2' component='span' className={classes.title}>Search Companies</Typography>
-            <Button href='/companies/' className={classes.refresh}>Show all companies</Button>
+            <Button href='/companies/' className={classes.refresh} variant='outlined'>Show all companies</Button>
+            {companies.length ? <Search companies={companies} types={filteredTypes} locations={filteredLocations} /> : <Skeleton variant='rect' width={700} height={20} />}
             {companies.length ? <Companies data={companies} /> : 
             <>
                 <Card className={classes.root}>
