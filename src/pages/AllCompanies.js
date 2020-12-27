@@ -47,7 +47,9 @@ const useStyles = makeStyles((theme) => ({
 const AllCompanies = (props) => {
     const [companies] = useCompanies();
     const classes = useStyles();
-    const [filter, setFilter] = useState('');
+    const [nameFilter, setNameFilter] = useState('');
+    const [typeFilter, setTypeFilter] = useState('');
+    const [locationFilter, setLocationFilter] = useState('');
     const types = function(companies) {
         const filtered = [];
         for(let i=0; i<companies.length; i++) {
@@ -87,17 +89,27 @@ const AllCompanies = (props) => {
     };
     const filteredLocations = locations(companies);
 
-    const handleSearchChange = (event) => {
+    const handleNameChange = (event) => {
         console.log(event.target.value);
-        setFilter(event.target.value);
+        setNameFilter(event.target.value);
+    }
+
+    const handleTypeChange = (event) => {
+        console.log(event.target.value);
+        setTypeFilter(event.target.value);
+    }
+
+    const handleLocationChange = (event) => {
+        console.log(event.target.value);
+        setLocationFilter(event.target.value);
     }
 
     return (
         <>
             <Typography variant='h2' component='span' className={classes.title}>Search Companies</Typography>
             <Button href='/companies/' className={classes.refresh} variant='outlined'>Show all companies</Button>
-            {companies.length ? <Search companies={companies} types={filteredTypes} locations={filteredLocations} handleSearchChange={handleSearchChange} /> : <Skeleton variant='rect' width={700} height={20} />}
-            {companies.length ? <Companies data={companies} filter={filter} /> : 
+            {companies.length ? <Search companies={companies} types={filteredTypes} locations={filteredLocations} handleNameChange={handleNameChange} handleTypeChange={handleTypeChange} handleLocationChange={handleLocationChange}/> : <Skeleton variant='rect' width={700} height={20} />}
+            {companies.length ? <Companies data={companies} nameFilter={nameFilter} typeFilter={typeFilter} locationFilter={locationFilter} /> : 
             <>
                 <Card className={classes.root}>
                     <Skeleton variant='rect' width={264} height={264} />

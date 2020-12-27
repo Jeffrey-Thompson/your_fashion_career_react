@@ -16,14 +16,6 @@ function useCompanies(companyId) {
         }
     }
 
-    function searchCompanies(event) {
-        event.preventDefault();
-        CompanyModel.all().then((data) => {
-            console.log(event.target.name.value);
-            setCompany(data.companies);
-        });
-    }
-
     useEffect(
         function () {
             fetchCompanies(companyId);
@@ -31,7 +23,7 @@ function useCompanies(companyId) {
         [companyId]
     );
 
-    return [companies, fetchCompanies, searchCompanies];
+    return [companies, fetchCompanies];
 }
 
 export default useCompanies;

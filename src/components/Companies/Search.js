@@ -20,21 +20,21 @@ const Search = (props) => {
                 options={props.companies}
                 getOptionLabel={(option) => option.name}
                 style={{ width: 300}}
-                renderInput={(params) => <TextField {...params} label='Company Name' variant='outlined' name='name' onSelect={props.handleSearchChange}  />}
+                renderInput={(params) => <TextField {...params} label='Company Name' variant='outlined' name='name' onSelect={props.handleNameChange}  />}
             />
             <Autocomplete 
                 id='type'
                 options={props.types}
                 getOptionLabel={(option) => option.type}
                 style={{ width: 300}}
-                renderInput={(params) => <TextField {...params} label='Category' variant='outlined' name='type' />}
+                renderInput={(params) => <TextField {...params} label='Category' variant='outlined' name='type' onSelect={props.handleTypeChange}/>}
             />
             <Autocomplete 
                 id='location'
                 options={props.locations}
                 getOptionLabel={(option) => option.location}
                 style={{ width: 300}}
-                renderInput={(params) => <TextField {...params} label='Location' variant='outlined' name='location' />}
+                renderInput={(params) => <TextField {...params} label='Location' variant='outlined' name='location' onSelect={props.handleLocationChange} />}
             />
             <Button variant='contained'>Search</Button>
         </Box>
