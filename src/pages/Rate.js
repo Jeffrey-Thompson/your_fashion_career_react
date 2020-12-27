@@ -128,7 +128,7 @@ const marks = [
 const Rate = (props) => {
     const classes = useStyles();
     
-    const [company, fetchCompanies] = useCompanies(props.match.params.id);
+    const [company] = useCompanies(props.match.params.id);
     const [employee, setEmployee] = React.useState('current');
     
     const handleEmployee = (event) => {

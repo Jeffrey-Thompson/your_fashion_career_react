@@ -10,11 +10,14 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'row',
         margin: '4px',
-        background: theme.palette.primary.main
+        background: theme.palette.primary.main,
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column'
+        }
     },
     layout: {
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     media: {
         height: 264,
@@ -59,7 +62,7 @@ const CompanyCard = (props) => {
     const classes = useStyles();
 
     return (
-        <Card className={classes.root}>
+        <Card className={classes.root} >
             <CardActionArea className={classes.layout} href={companyLink}>
                 <CardMedia className={classes.media} image={logo} title={name} />
                 <CardContent className={classes.text}>

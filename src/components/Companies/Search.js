@@ -7,16 +7,25 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
         flexDirection: 'row',
-        width: '100%'
+        width: '100%',
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column',
+        }
     },
     inputs: {
-        flex: '1 1 300px'
+        flex: '1 1 300px',
+        [theme.breakpoints.down('sm')]: {
+            flex: '1 1 0px',
+        }
     },
     button: {
         background: theme.palette.text.primary,
         fontFamily: 'Druk',
         color: 'white',
-        flex: '0 1 200px'
+        flex: '0 1 200px',
+        [theme.breakpoints.down('sm')]: {
+            flex: '1 1 0px',
+        }
     }
 }));
 
