@@ -6,7 +6,17 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        width: '100%'
+    },
+    inputs: {
+        flex: '1 1 300px'
+    },
+    button: {
+        background: theme.palette.text.primary,
+        fontFamily: 'Druk',
+        color: 'white',
+        flex: '0 1 200px'
     }
 }));
 
@@ -19,24 +29,24 @@ const Search = (props) => {
                 id='name'
                 options={props.companies}
                 getOptionLabel={(option) => option.name}
-                style={{ width: 300}}
+                className={classes.inputs}
                 renderInput={(params) => <TextField {...params} label='Company Name' variant='outlined' name='name' onSelect={props.handleNameChange}  />}
             />
             <Autocomplete 
                 id='type'
                 options={props.types}
                 getOptionLabel={(option) => option.type}
-                style={{ width: 300}}
+                className={classes.inputs}
                 renderInput={(params) => <TextField {...params} label='Category' variant='outlined' name='type' onSelect={props.handleTypeChange}/>}
             />
             <Autocomplete 
                 id='location'
                 options={props.locations}
                 getOptionLabel={(option) => option.location}
-                style={{ width: 300}}
+                className={classes.inputs}
                 renderInput={(params) => <TextField {...params} label='Location' variant='outlined' name='location' onSelect={props.handleLocationChange} />}
             />
-            <Button variant='contained'>Search</Button>
+            <Button variant='contained' disableElevation className={classes.button}>Search</Button>
         </Box>
     )
 }
