@@ -58,6 +58,7 @@ const Signin = (props) => {
             <Grid item xs={7} >
                 <Box className={classes.root} border={2} >
                     <Typography variant='h3' className={classes.subheading}>Sign In</Typography>
+                    <Typography variant='h6'>Welcome Back!</Typography>
                     <form noValidate onSubmit={handleSubmit}>
                         <TextField className={classes.form} id='email' label='Email' variant='standard' onChange={(e) => setEmail(e.target.value)} value={email}/>
                         <TextField type='password' className={classes.form} id='password' label='Password' variant='standard' onChange={(e) => setPassword(e.target.value)} value={password}/>
