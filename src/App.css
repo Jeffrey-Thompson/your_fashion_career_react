@@ -10,3 +10,7 @@
         margin: auto;
     }
 }
+
+#banner {
+    background-image: url('https://res.cloudinary.com/dvk80uh1a/image/upload/v1609091322/GANNI_COVER_IMAGE_g0lppq.png');
+}

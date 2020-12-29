@@ -1,6 +1,7 @@
 import React from 'react';
 import { Typography, Box, TextField, Button, Radio, RadioGroup, FormControl, FormControlLabel, Grid, Slider, Checkbox } from '@material-ui/core';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
+import useCompanies from '../hooks/useCompanies';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -24,8 +25,6 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'row'
     },
     button: {
-        color: 'white',
-        background: theme.palette.text.primary,
         borderRadius: '0',
         marginTop: '10px',
         fontFamily: 'Druk',
@@ -37,6 +36,17 @@ const useStyles = makeStyles((theme) => ({
     },
     inputs: {
         width: '100%'
+    },
+    spacing: {
+        marginTop: '64px'
+    },
+    banner: {
+        width: '100%',
+        height: '400px'
+    },
+    logo: {
+        marginLeft: '50px',
+        marginTop: '50px'
     }
 }));
 
@@ -115,35 +125,25 @@ const marks = [
 ]
 
 
-const Rate = () => {
+const Rate = (props) => {
     const classes = useStyles();
     
+    const [company] = useCompanies(props.match.params.id);
     const [employee, setEmployee] = React.useState('current');
-
+    
     const handleEmployee = (event) => {
         setEmployee(event.target.value);
     };
 
     return(
         <Box className={classes.root} >
-            <Typography variant='h2' className={classes.subheading}>Rate a Fashion Company</Typography>
+            <Box className={classes.banner} id='banner'>
+                <img src={company.logo} alt={company.name} className={classes.logo}></img>
+            </Box>
+            <Typography variant='h2' className={classes.subheading}>Review {company.name}</Typography>
             <form>
                 <Grid container>
                     <Grid item xs={12}>
-                        <Typography variant='h6' className={classes.subheading}>Company</Typography>
-                        <TextField id='name' name='name' variant='outlined' className={classes.inputs}/>
-                        <Typography variant='h6' className={classes.subheading}>Are you a current or former employee?</Typography>
-                        <FormControl component='fieldset'>
-                            <RadioGroup name='employee' value={employee} onChange={handleEmployee} className={classes.radio}>
-                                <FormControlLabel value='current' control={<Radio />} label='Current' />
-                                <FormControlLabel value='former' control={<Radio />} label='Former' />
-                            </RadioGroup>
-                        </FormControl>
-                        <Typography variant='h6' className={classes.subheading}>Job Title</Typography>
-                        <TextField id='title' name='title' variant='outlined' className={classes.inputs}/>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Typography variant='h6' className={classes.subheading}>Categories</Typography>
                         <Box className={classes.categories} >
                             <Grid container id='categories'>
                                 <Grid item sm={1}></Grid>
@@ -208,16 +208,34 @@ const Rate = () => {
                             </Grid>
                         </Box>
                     </Grid>
+                    <Grid item xs={12} container>
+                        <Grid item sm={4} xs={6}>
+                            <Typography variant='h6' className={classes.subheading}>Review title</Typography>
+                            <TextField id='reviewTitle' name='reviewTitle' variant='outlined' className={classes.inputs}/>
+                        </Grid>
+                        <Grid item sm={1}></Grid>
+                        <Grid item sm={4} xs={6}>
+                            <Typography variant='h6' className={classes.subheading}>Job Title</Typography>
+                            <TextField id='title' name='title' variant='outlined' className={classes.inputs}/>
+                        </Grid>
+                    </Grid>
                     <Grid item xs={12}>
-                        <Typography variant='h6' className={classes.subheading}>Review title</Typography>
-                        <TextField id='reviewTitle' name='reviewTitle' variant='outlined' className={classes.inputs}/>
                         <Typography variant='h6' className={classes.subheading}>General comments</Typography>
                         <TextField id='comments' name='comments' variant='outlined' multiline rows={5} className={classes.inputs}/>
                     </Grid>
-                <FormControlLabel control={<Checkbox name="agree" required/>} label="I agree to Your Fashion Career's Terms of Use. I certify that this review is a truthful account of my experience with this company." />
+                    <Grid item xs={12}>
+                        <Typography variant='h6' className={classes.subheading}>Are you a current or former employee?</Typography>
+                        <FormControl component='fieldset'>
+                            <RadioGroup name='employee' value={employee} onChange={handleEmployee} className={classes.radio}>
+                                <FormControlLabel value='current' control={<Radio />} label='Current' />
+                                <FormControlLabel value='former' control={<Radio />} label='Former' />
+                            </RadioGroup>
+                        </FormControl>
+                    </Grid>
+                <FormControlLabel className={classes.spacing} control={<Checkbox name="agree" required/>} label="I agree to Your Fashion Career's Terms of Use. I certify that this review is a truthful account of my experience with this company." />
                 </Grid>
                 <Box justifyContent='center' display='flex'>
-                    <Button type='submit' variant='contained' disableElevation className={classes.button}>Submit</Button>
+                    <Button type='submit' variant='outlined' disableElevation className={classes.button}>Submit</Button>
                 </Box>
             </form>
         </Box>

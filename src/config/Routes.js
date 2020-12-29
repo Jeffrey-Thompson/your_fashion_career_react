@@ -10,7 +10,7 @@ const Routes = (props) => {
         <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/rate/:id' component={Rate} />
-            <Route path='/companies/' component={AllCompanies} />
+            <Route path='/companies' component={AllCompanies} />
             <Route path='*' render={() => <h1>Maybe your career has taken a wrong turn or maybe you just typed something wrong. Either way this page doesn't exist.</h1>} />
         </Switch>
     );
