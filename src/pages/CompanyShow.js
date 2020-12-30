@@ -1,8 +1,10 @@
 import React from 'react';
 import useCompanies from '../hooks/useCompanies';
-import { Box, Typography } from '@material-ui/core';
+import { Box, Typography, Link, Button } from '@material-ui/core';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
+import AddIcon from '@material-ui/icons/Add';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -11,7 +13,13 @@ const useStyles = makeStyles((theme) => ({
     banner: {
         width: '100%',
         height: '400px',
-        position: 'relative'
+        position: 'relative',
+        [theme.breakpoints.down('sm')]: {
+            position: 'static',
+            display: 'flex',
+            flexDirection: 'column',
+            height: 'auto'
+        }
     },
     grey: {
         background: theme.palette.primary.main,
@@ -19,6 +27,10 @@ const useStyles = makeStyles((theme) => ({
         bottom: '0px',
         height: '200px',
         width: '100%',
+        [theme.breakpoints.down('sm')]: {
+            position: 'static',
+            height: 'auto'
+        }
     },
     logo: {
         width: '264px',
@@ -26,16 +38,34 @@ const useStyles = makeStyles((theme) => ({
         position: 'absolute',
         left: '30px',
         bottom: '30px',
+        [theme.breakpoints.down('sm')]: {
+            position: 'static',
+        }
     },
     info: {
         position: 'absolute',
         bottom: '0px',
         left: '300px',
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        [theme.breakpoints.down('sm')]: {
+            position: 'static',
+            flexDirection: 'column'
+        }
     },
     title: {
-        fontFamily: 'Druk'
+        fontFamily: 'Druk',
+        marginRight: '10px'
+    },
+    button: {
+        fontFamily: 'Druk',
+        marginRight: '30px'
+    },
+    link: {
+        color: 'blue'
+    },
+    boxes: {
+        padding: '10px 10px 30px 20px'
     }
 }));
 
@@ -50,7 +80,8 @@ const StyledRating = withStyles({
 
 const CompanyShow = (props) => {
     const [company] = useCompanies(props.match.params.id);
-    const {overall, logo, name} = company;
+    const {overall, logo, name, type, link, location, size, description} = company;
+    const leaveReview = `/rate/${props.match.params.id}`
     const classes = useStyles();
 
     return (
@@ -59,12 +90,19 @@ const CompanyShow = (props) => {
                 <Box className={classes.grey}>
                     <img src={logo} alt={name} className={classes.logo} />
                     <Box className={classes.info}>
-                        <Box>
+                        <Box className={classes.boxes}>
                             <Typography variant='h3' component='span' className={classes.title}>{name}</Typography>
                             <StyledRating value={overall} readOnly precision={0.1} />
+                            <Typography variant='subtitle1'>{type}</Typography>
+                            <Link href={link} target='_blank' rel='noopener' className={classes.link}>{link}</Link>
+                            <Typography variant='body2'>{location}</Typography>
+                            <Typography variant='subtitle1' component='span'>Size: </Typography>
+                            <Typography variant='body2' component='span'>{size}</Typography>
                         </Box>
-                        <Box>
-
+                        <Box className={classes.boxes}>
+                            <Button href={leaveReview} className={classes.button}><AddIcon className={classes.title}></AddIcon>Leave a review</Button>
+                            <Button className={classes.button}><FavoriteBorderIcon className={classes.title}></FavoriteBorderIcon>Save</Button>
+                            <Typography variant='body2'>{description}</Typography>
                         </Box>
                     </Box>
                 </Box>
