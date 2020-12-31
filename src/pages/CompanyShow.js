@@ -5,6 +5,7 @@ import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
 import AddIcon from '@material-ui/icons/Add';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import RatingCircle from '../components/RatingCircle/RatingCircle';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -65,7 +66,17 @@ const useStyles = makeStyles((theme) => ({
         color: 'blue'
     },
     boxes: {
-        padding: '10px 10px 30px 20px'
+        padding: '10px 10px 0px 20px',
+        height: '200px',
+        flex: '1 1 300px',
+        [theme.breakpoints.down('sm')]: {
+            height: 'auto',
+            flex: '1 1 0px'
+        }
+    },
+    circleRow: {
+        display: 'flex',
+        flexDirection: 'row'
     }
 }));
 
@@ -80,7 +91,7 @@ const StyledRating = withStyles({
 
 const CompanyShow = (props) => {
     const [company] = useCompanies(props.match.params.id);
-    const {overall, logo, name, type, link, location, size, description} = company;
+    const {overall, logo, name, type, link, location, size, description, workLife, salary} = company;
     const leaveReview = `/rate/${props.match.params.id}`
     const classes = useStyles();
 
@@ -108,6 +119,17 @@ const CompanyShow = (props) => {
                 </Box>
             </Box>
             <Typography variant='h4' className={classes.title}>Cheat Sheet</Typography>
+            <Box className={classes.circleRow}>
+                <Box>
+                    <RatingCircle rating={workLife}></RatingCircle>
+                    <Typography variant='subtitle1'>Work-Life</Typography>
+                </Box>
+                <Box>
+                    <RatingCircle rating={salary}></RatingCircle>
+                    <Typography variant='subtitle1'>Salary</Typography>
+                </Box>
+            </Box>
+            
         </Box>
     )
 }
