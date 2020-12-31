@@ -3,6 +3,7 @@ import useCompanies from '../hooks/useCompanies';
 import { Box, Typography, Link, Button } from '@material-ui/core';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
+import Skeleton from '@material-ui/lab/Skeleton';
 import AddIcon from '@material-ui/icons/Add';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import RatingCircle from '../components/RatingCircle/RatingCircle';
@@ -63,7 +64,8 @@ const useStyles = makeStyles((theme) => ({
         marginRight: '30px'
     },
     link: {
-        color: 'blue'
+        color: 'blue',
+        fontFamily: 'Montserrat'
     },
     boxes: {
         padding: '10px 10px 0px 20px',
@@ -76,7 +78,10 @@ const useStyles = makeStyles((theme) => ({
     },
     circleRow: {
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        width: '100%',
+        justifyContent: 'space-between'
     }
 }));
 
@@ -91,7 +96,7 @@ const StyledRating = withStyles({
 
 const CompanyShow = (props) => {
     const [company] = useCompanies(props.match.params.id);
-    const {overall, logo, name, type, link, location, size, description, workLife, salary} = company;
+    const {overall, logo, name, type, link, location, size, description, workLife, salary, treatment, diversity, sustainability, development, authenticity, management, growth, freedom} = company;
     const leaveReview = `/rate/${props.match.params.id}`
     const classes = useStyles();
 
@@ -103,7 +108,7 @@ const CompanyShow = (props) => {
                     <Box className={classes.info}>
                         <Box className={classes.boxes}>
                             <Typography variant='h3' component='span' className={classes.title}>{name}</Typography>
-                            <StyledRating value={overall} readOnly precision={0.1} />
+                            {overall ?<StyledRating value={overall} readOnly precision={0.1} /> : <Skeleton variant='rect' width={300} height={20} />}
                             <Typography variant='subtitle1'>{type}</Typography>
                             <Link href={link} target='_blank' rel='noopener' className={classes.link}>{link}</Link>
                             <Typography variant='body2'>{location}</Typography>
@@ -120,16 +125,17 @@ const CompanyShow = (props) => {
             </Box>
             <Typography variant='h4' className={classes.title}>Cheat Sheet</Typography>
             <Box className={classes.circleRow}>
-                <Box>
-                    <RatingCircle rating={workLife}></RatingCircle>
-                    <Typography variant='subtitle1'>Work-Life</Typography>
-                </Box>
-                <Box>
-                    <RatingCircle rating={salary}></RatingCircle>
-                    <Typography variant='subtitle1'>Salary</Typography>
-                </Box>
+                <RatingCircle rating={workLife} name='Work-Life'></RatingCircle>
+                <RatingCircle rating={salary} name='Salary'></RatingCircle>
+                <RatingCircle rating={development} name='Career Development'></RatingCircle>
+                <RatingCircle rating={treatment} name='Kindness'></RatingCircle>
+                <RatingCircle rating={diversity} name='Diversity'></RatingCircle>
+                <RatingCircle rating={sustainability} name='Sustainable Practice'></RatingCircle>
+                <RatingCircle rating={authenticity} name='Authenticity'></RatingCircle>
+                <RatingCircle rating={management} name='Management'></RatingCircle>
+                <RatingCircle rating={growth} name='Growth'></RatingCircle>
+                <RatingCircle rating={freedom} name='Creative Freedom'></RatingCircle>
             </Box>
-            
         </Box>
     )
 }

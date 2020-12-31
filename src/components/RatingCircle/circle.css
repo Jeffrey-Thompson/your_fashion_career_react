@@ -72,7 +72,7 @@
   width: 5em;
   line-height: 5em;
   font-size: 0.2em;
-  color: #cccccc;
+  color: #404041;
   display: block;
   text-align: center;
   white-space: nowrap;
@@ -876,4 +876,16 @@
 }
 .c100.orange.dark:hover > span {
   color: #e08833;
+}
+.c100.purple .bar, .c100.purple .fill {
+  border-color: #c2b7fa !important;
+}
+.c100.purple:hover > span {
+  color: #c2b7fa;
+}
+.c100.purple.dark .bar, .c100.purple.dark .fill {
+  border-color: #9187c7 !important;
+}
+.c100.purple.dark:hover > span {
+  color: #9187c7;
 }
