@@ -149,20 +149,7 @@ const Rate = (props) => {
     
     const [values, setValues] = useState(initialValues);
     const [company] = useCompanies(props.match.params.id);
-    // const [employee, setEmployee] = React.useState('current');
-    // const [development, setDevelopment] = React.useState(3);
-    // const [workLife, setWorkLife] = React.useState(3);
-    // const [salary, setSalary] = React.useState(3);
-    // const [sustainability, setSustainabilty] = React.useState(3);
-    // const [treatment, setTreatment] = React.useState(3);
-    // const [authenticity, setAuthenticity] = React.useState(3);
-    // const [diversity, setDiversity] = React.useState(3);
-    // const [freedom, setFreedom] = React.useState(3);
-    // const [management, setManagement] = React.useState(3);
-    // const [growth, setGrowth] = React.useState(3);
-    // const [title, setTitle] = React.useState('');
-    // const [reviewTitle, setReviewTitle] = React.useState('');
-    // const [text, setText] = React.useState('');
+
     const handleInputChange = e => {
         const {name, value} = e.target;
         setValues({
@@ -244,9 +231,12 @@ const Rate = (props) => {
     function handleSubmit(event) {
         event.preventDefault();
 
+        const overall = ((values.development+values.workLife+values.salary+values.sustainability+values.treatment+values.authenticity+values.diversity+values.freedom+values.management+values.growth)*5)/50
+
         const review = {
             ...values,
-            company: props.match.params.id
+            company: props.match.params.id,
+            overall: overall
         }
 
         RatingModel.create(props.match.params.id, review).then(
