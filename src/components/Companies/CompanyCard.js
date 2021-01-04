@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, CardActionArea, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import Rating from '@material-ui/lab/Rating';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles} from '@material-ui/core/styles';
+import Stars from '../Stars/Stars';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -46,15 +46,6 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const StyledRating = withStyles({
-    iconFilled: {
-        color: '#404041'
-    },
-    iconHover: {
-        color: '#404041'
-    },
-})(Rating);
-
 const CompanyCard = (props) => {
     const {name, logo, overall, type, location, size, _id} = props.company;
     const rateLink = `/rate/${_id}`;
@@ -67,7 +58,7 @@ const CompanyCard = (props) => {
                 <CardMedia className={classes.media} image={logo} title={name} />
                 <CardContent className={classes.text}>
                     <Typography variant="h3" component='span' className={classes.title}>{name}</Typography>
-                    <StyledRating value={overall} readOnly precision={0.1} />
+                    <Stars overall={overall} />
                     <Typography variant='h6'>{type}</Typography>
                     <Typography variant='subtitle1'>{location}</Typography>
                     <Typography variant='h6' component='span'>Size: </Typography>

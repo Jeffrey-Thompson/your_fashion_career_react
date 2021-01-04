@@ -2,13 +2,13 @@ import React from 'react';
 import useCompanies from '../hooks/useCompanies';
 import useRatings from '../hooks/useRatings';
 import { Box, Typography, Link, Button } from '@material-ui/core';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Rating from '@material-ui/lab/Rating';
+import { makeStyles } from '@material-ui/core/styles';
 import Skeleton from '@material-ui/lab/Skeleton';
 import AddIcon from '@material-ui/icons/Add';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import RatingCircle from '../components/RatingCircle/RatingCircle';
 import Ratings from '../components/Ratings/Ratings';
+import Stars from '../components/Stars/Stars';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -87,15 +87,6 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const StyledRating = withStyles({
-    iconFilled: {
-        color: '#404041'
-    },
-    iconHover: {
-        color: '#404041'
-    },
-})(Rating);
-
 const CompanyShow = (props) => {
     const [company] = useCompanies(props.match.params.id);
     const [reviews] = useRatings(props.match.params.id);
@@ -111,7 +102,7 @@ const CompanyShow = (props) => {
                     <Box className={classes.info}>
                         <Box className={classes.boxes}>
                             <Typography variant='h3' component='span' className={classes.title}>{name}</Typography>
-                            {overall ?<StyledRating value={overall} readOnly precision={0.1} /> : <Skeleton variant='rect' width={300} height={20} />}
+                            {overall ?<Stars overall={overall} /> : <Skeleton variant='rect' width={300} height={20} />}
                             <Typography variant='subtitle1'>{type}</Typography>
                             <Link href={link} target='_blank' rel='noopener' className={classes.link}>{link}</Link>
                             <Typography variant='body2'>{location}</Typography>
