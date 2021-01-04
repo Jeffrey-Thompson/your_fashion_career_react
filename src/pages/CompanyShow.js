@@ -1,5 +1,6 @@
 import React from 'react';
 import useCompanies from '../hooks/useCompanies';
+import useRatings from '../hooks/useRatings';
 import { Box, Typography, Link, Button } from '@material-ui/core';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
@@ -7,6 +8,7 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import AddIcon from '@material-ui/icons/Add';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import RatingCircle from '../components/RatingCircle/RatingCircle';
+import Ratings from '../components/Ratings/Ratings';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -71,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
         padding: '10px 10px 0px 20px',
         height: '200px',
         flex: '1 1 300px',
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('md')]: {
             height: 'auto',
             flex: '1 1 0px'
         }
@@ -81,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'row',
         flexWrap: 'wrap',
         width: '100%',
-        justifyContent: 'space-between'
+        justifyContent: 'space-around'
     }
 }));
 
@@ -96,6 +98,7 @@ const StyledRating = withStyles({
 
 const CompanyShow = (props) => {
     const [company] = useCompanies(props.match.params.id);
+    const [reviews] = useRatings(props.match.params.id);
     const {overall, logo, name, type, link, location, size, description, workLife, salary, treatment, diversity, sustainability, development, authenticity, management, growth, freedom} = company;
     const leaveReview = `/rate/${props.match.params.id}`
     const classes = useStyles();
@@ -136,6 +139,8 @@ const CompanyShow = (props) => {
                 <RatingCircle rating={growth} name='Growth'></RatingCircle>
                 <RatingCircle rating={freedom} name='Creative Freedom'></RatingCircle>
             </Box>
+            <Typography variant='h4' className={classes.title}>Reviews</Typography>
+            {reviews.length ? <Ratings data={reviews} />: <Skeleton width={700} height={40} />}
         </Box>
     )
 }

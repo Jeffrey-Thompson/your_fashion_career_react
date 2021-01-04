@@ -11,6 +11,10 @@ class RatingModel {
         })
         .then(response => response.json());
     }
+
+    static company = (companyId) => {
+        return fetch(`${URL}/${companyId}/reviews`).then(response => response.json());
+    }
 }
 
 export default RatingModel;
