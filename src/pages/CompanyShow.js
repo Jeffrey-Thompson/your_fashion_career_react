@@ -6,9 +6,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Skeleton from '@material-ui/lab/Skeleton';
 import AddIcon from '@material-ui/icons/Add';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import RatingCircle from '../components/RatingCircle/RatingCircle';
 import Ratings from '../components/Ratings/Ratings';
 import Stars from '../components/Stars/Stars';
+import Circles from '../components/RatingCircle/Circles';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -78,19 +78,12 @@ const useStyles = makeStyles((theme) => ({
             flex: '1 1 0px'
         }
     },
-    circleRow: {
-        display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        width: '100%',
-        justifyContent: 'space-around'
-    }
 }));
 
 const CompanyShow = (props) => {
     const [company] = useCompanies(props.match.params.id);
     const [reviews] = useRatings(props.match.params.id);
-    const {overall, logo, name, type, link, location, size, description, workLife, salary, treatment, diversity, sustainability, development, authenticity, management, growth, freedom} = company;
+    const {overall, logo, name, type, link, location, size, description} = company;
     const leaveReview = `/rate/${props.match.params.id}`
     const classes = useStyles();
 
@@ -118,18 +111,7 @@ const CompanyShow = (props) => {
                 </Box>
             </Box>
             <Typography variant='h4' className={classes.title}>Cheat Sheet</Typography>
-            <Box className={classes.circleRow}>
-                <RatingCircle rating={workLife} name='Work-Life'></RatingCircle>
-                <RatingCircle rating={salary} name='Salary'></RatingCircle>
-                <RatingCircle rating={development} name='Career Development'></RatingCircle>
-                <RatingCircle rating={treatment} name='Kindness'></RatingCircle>
-                <RatingCircle rating={diversity} name='Diversity'></RatingCircle>
-                <RatingCircle rating={sustainability} name='Sustainable Practice'></RatingCircle>
-                <RatingCircle rating={authenticity} name='Authenticity'></RatingCircle>
-                <RatingCircle rating={management} name='Management'></RatingCircle>
-                <RatingCircle rating={growth} name='Growth'></RatingCircle>
-                <RatingCircle rating={freedom} name='Creative Freedom'></RatingCircle>
-            </Box>
+            <Circles company={company} />
             <Typography variant='h4' className={classes.title}>Reviews</Typography>
             {reviews.length ? <Ratings data={reviews} />: <Skeleton width={700} height={40} />}
         </Box>

@@ -11,8 +11,8 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         color: theme.palette.text.primary,
         alignItems: 'center',
-        width: '170px',
-        marginBottom: '10px'
+        width: '100px',
+        marginBottom: '10px',
     },
     label: {
         textAlign: "center"
@@ -23,7 +23,7 @@ const RatingCircle = (props) => {
     const rating = props.rating;
     const percentage = Math.round((rating*100)/5);
     const round = Math.round(rating);
-    const circle = `c100 p${percentage} purple`;
+    const circle = `c100 p${percentage} purple small`;
     const classes = useStyles();
 
     return (
