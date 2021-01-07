@@ -9,6 +9,8 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Link from '@material-ui/core/Link';
 import TemporaryDrawer from '../Sidebar/Sidebar'
+import { useRecoilState } from "recoil";
+import { userState } from "../../recoil/atoms";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -36,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = () => {
     const classes = useStyles();
+    const [user, setUser] = useRecoilState(userState);
     return (
         <Box className={classes.root} borderTop={5} borderColor='secondary.main'>
             <AppBar position='sticky' elevation={0}>

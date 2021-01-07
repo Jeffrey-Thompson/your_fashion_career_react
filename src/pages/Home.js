@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = (props) => {
     const classes = useStyles();
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -45,10 +46,11 @@ const Home = (props) => {
     event.preventDefault();
     console.log("Thing hit")
 
-    AuthModel.register({email, password}).then(response=>{
-      console.log(response)
+    AuthModel.register({username, email, password}).then(response=>{
+      console.log(response.status)
+      console.log(`${username},${email}, ${password}`)
       if (response.status === 201) {
-        props.history.push("/dashboard")
+        props.history.push("/signin")
       } 
     })
   }
@@ -60,7 +62,8 @@ const Home = (props) => {
                     <Typography variant='h3' className={classes.subheading}>What it's really like to work in fashion</Typography>
                     <Typography variant='h6'>Read and contribute reviews of fashion's top companies.</Typography>
                     <form noValidate onSubmit={handleSubmit}>
-                        <TextField className={classes.form} id='email' label='Create account with your email' variant='standard' onChange={(e) => setEmail(e.target.value)} value={email}/>
+                        <TextField className={classes.form} id='username' label='Username' variant='standard' onChange={(e) => setUsername(e.target.value)} value={username}/>
+                        <TextField className={classes.form} id='email' label='Email' variant='standard' onChange={(e) => setEmail(e.target.value)} value={email}/>
                         <TextField type='password' className={classes.form} id='password' label='Password' variant='standard' onChange={(e) => setPassword(e.target.value)} value={password}/>
                         <br></br>
                         <Button type='submit' variant='contained' className={classes.button} >Join Us</Button>

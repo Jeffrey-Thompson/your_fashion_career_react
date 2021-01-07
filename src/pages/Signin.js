@@ -6,6 +6,11 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import AuthModel from '../models/AuthModel';
+import UserModel from "../models/UserModel";
+import { useRecoilState } from "recoil";
+import { userState } from "../recoil/atoms";
+import { useSetRecoilState } from "recoil";
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -38,19 +43,28 @@ const useStyles = makeStyles((theme) => ({
 
 const Signin = (props) => {
     const classes = useStyles();
+    const [user, setUser] = useRecoilState(userState);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("Thing hit")
 
-    AuthModel.register({email, password}).then(response=>{
-      console.log(response)
-      if (response.status === 201) {
-        props.history.push("/dashboard")
-      } 
-    })
+    AuthModel.login({email, password}).then(response=>{
+        console.log(response)
+        if (response.status === 200) {
+            localStorage.setItem("uid", response.signedJwt)
+            UserModel.show().then((response) => {
+                console.log(response);
+                setUser(response.user);
+                props.history.push("/companies")
+              });
+        } 
+        else {
+            props.history.push("/*")
+        }
+      })
+
   }
     return (
         <Grid container direction='column' justify='center' alignItems='center'>
@@ -59,9 +73,9 @@ const Signin = (props) => {
                 <Box className={classes.root} border={2} >
                     <Typography variant='h3' className={classes.subheading}>Sign In</Typography>
                     <Typography variant='h6'>Welcome Back!</Typography>
-                    <form noValidate onSubmit={handleSubmit}>
-                        <TextField className={classes.form} id='email' label='Email' variant='standard' onChange={(e) => setEmail(e.target.value)} value={email}/>
-                        <TextField type='password' className={classes.form} id='password' label='Password' variant='standard' onChange={(e) => setPassword(e.target.value)} value={password}/>
+                    <form onSubmit={handleSubmit}>
+                        <TextField className={classes.form} id='email' label='Email' variant='standard' onChange={(e) => setEmail(e.target.value)} value={email} name='email'/>
+                        <TextField type='password' className={classes.form} id='password' label='Password' variant='standard' onChange={(e) => setPassword(e.target.value)} value={password} name='password'/>
                         <br></br>
                         <Button type='submit' variant='contained' className={classes.button} >Sign In</Button>
                     </form>
