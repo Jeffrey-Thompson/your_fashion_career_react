@@ -7,7 +7,7 @@ function useCompanies(companyId) {
     function fetchCompanies(id) {
         if (id) {
             CompanyModel.show(id).then((data) => {
-                setCompany(data.companies);
+                setCompany(data.company);
             });
         } else {
             CompanyModel.all().then((data) => {
