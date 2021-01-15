@@ -322,17 +322,17 @@ const Rate = (props) => {
                     <Grid item xs={12} container>
                         <Grid item sm={4} xs={6}>
                             <Typography variant='h6' className={classes.subheading}>Review title</Typography>
-                            <TextField id='reviewTitle' name='reviewTitle' variant='outlined' className={classes.inputs} value={values.reviewTitle} onChange={handleInputChange}/>
+                            <TextField id='reviewTitle' name='reviewTitle' variant='outlined' className={classes.inputs} value={values.reviewTitle} required onChange={handleInputChange}/>
                         </Grid>
                         <Grid item sm={1}></Grid>
                         <Grid item sm={4} xs={6}>
-                            <Typography variant='h6' className={classes.subheading}>Job Title</Typography>
-                            <TextField id='title' name='title' variant='outlined' className={classes.inputs} value={values.title} onChange={handleInputChange}/>
+                            <Typography variant='h6' className={classes.subheading}>Job title</Typography>
+                            <TextField id='title' name='title' variant='outlined' className={classes.inputs} value={values.title} required onChange={handleInputChange}/>
                         </Grid>
                     </Grid>
                     <Grid item xs={12}>
                         <Typography variant='h6' className={classes.subheading}>General comments</Typography>
-                        <TextField id='comments' name='text' variant='outlined' multiline rows={5} className={classes.inputs} value={values.text} onChange={handleInputChange}/>
+                        <TextField id='comments' name='text' variant='outlined' multiline required rows={5} className={classes.inputs} value={values.text} onChange={handleInputChange}/>
                     </Grid>
                     <Grid item xs={12}>
                         <Typography variant='h6' className={classes.subheading}>Are you a current or former employee?</Typography>

@@ -7,7 +7,6 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import Box  from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -23,14 +22,6 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         paddingTop: '80px',
         paddingLeft: '10px'
-    },
-    button: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        flex: '0 0 200px',
-        alignItems: 'center',
-        margin: '10px'
     },
     spacing: {
         marginBottom: '10px'
@@ -107,7 +98,6 @@ const AllCompanies = (props) => {
     return (
         <>
             <Typography variant='h2' component='span' className={classes.title}>Search Companies</Typography>
-            <Button href='/companies/' className={classes.refresh} variant='outlined'>Show all companies</Button>
             {companies.length ? <Search companies={companies} types={filteredTypes} locations={filteredLocations} handleNameChange={handleNameChange} handleTypeChange={handleTypeChange} handleLocationChange={handleLocationChange}/> : <Skeleton variant='rect' width={700} height={20} />}
             {companies.length ? <Companies data={companies} nameFilter={nameFilter} typeFilter={typeFilter} locationFilter={locationFilter} /> : 
             <>

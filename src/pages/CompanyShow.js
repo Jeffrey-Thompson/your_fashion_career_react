@@ -63,7 +63,8 @@ const useStyles = makeStyles((theme) => ({
     },
     button: {
         fontFamily: 'Druk',
-        marginRight: '30px'
+        marginRight: '30px',
+        fontSize: '24px'
     },
     link: {
         color: 'blue',
