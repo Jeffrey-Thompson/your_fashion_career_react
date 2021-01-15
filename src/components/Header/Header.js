@@ -50,6 +50,7 @@ const Header = () => {
                         <Link href='/signin' className={classes.links}>
                             Sign In
                         </Link>
+                        <h1>user</h1>
                     </Button>
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                         <TemporaryDrawer/>
