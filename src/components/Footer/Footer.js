@@ -32,57 +32,60 @@ const useStyles = makeStyles((theme) => ({
 const Footer = () => {
     const classes = useStyles();
     return (
-        <AppBar position='sticky' elevation={0} className={classes.root}>
-            <Toolbar>
-                <Grid container>
-                    <Grid item xs={12}>
-                        <Typography className={classes.title} variant='h6'>Fashion Job Rater</Typography>
-                    </Grid>
-                    <Grid item xs={12} >
-                        <ul className='link_list'>
-                            <li>
-                                <Link href='#' className={classes.links}>
-                                    Privacy
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href='#' className={classes.links}>
-                                    Terms
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href='#' className={classes.links}>
-                                    Contact
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href='#' className={classes.links}>
-                                    About
-                                </Link>
-                            </li>
-                        </ul>
-                    </Grid>
-                    <Grid item xs={12} >
-                        <Container style={{width: '20vw'}}>
+        <>
+            <AppBar position='fixed' elevation={0} className={classes.root}>
+                <Toolbar>
+                    <Grid container>
+                        <Grid item xs={12}>
+                            <Typography className={classes.title} variant='h6'>Fashion Job Rater</Typography>
+                        </Grid>
+                        <Grid item xs={12} >
                             <ul className='link_list'>
                                 <li>
-                                    <Facebook />
+                                    <Link href='#' className={classes.links}>
+                                        Privacy
+                                    </Link>
                                 </li>
                                 <li>
-                                    <Instagram />
+                                    <Link href='#' className={classes.links}>
+                                        Terms
+                                    </Link>
                                 </li>
                                 <li>
-                                    <Twitter />
+                                    <Link href='#' className={classes.links}>
+                                        Contact
+                                    </Link>
                                 </li>
                                 <li>
-                                    <Headset />
+                                    <Link href='#' className={classes.links}>
+                                        About
+                                    </Link>
                                 </li>
                             </ul>
-                        </Container>
+                        </Grid>
+                        <Grid item xs={12} >
+                            <Container style={{width: '20vw'}}>
+                                <ul className='link_list'>
+                                    <li>
+                                        <Facebook />
+                                    </li>
+                                    <li>
+                                        <Instagram />
+                                    </li>
+                                    <li>
+                                        <Twitter />
+                                    </li>
+                                    <li>
+                                        <Headset />
+                                    </li>
+                                </ul>
+                            </Container>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Toolbar>
-        </AppBar>
+                </Toolbar>
+            </AppBar>
+            <Toolbar/>
+        </>
     )
 }
 
