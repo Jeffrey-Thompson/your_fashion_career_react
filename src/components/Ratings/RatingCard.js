@@ -36,12 +36,21 @@ const useStyles = makeStyles((theme) => ({
     },
     text: {
         marginBottom: '50px'
-    }
+    },
+    jobTitleBar: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '80%',
+        flexWrap: 'wrap',
+        marginLeft: '50px'
+    },
 }));
 
 function RatingCard(props) {
     const classes = useStyles();
-    const { reviewTitle, text, overall } = props.review;
+    const { reviewTitle, text, overall, title, employee } = props.review;
     const [expanded, setExpanded] = React.useState(false);
 
     const handleExpandClick = () => {
@@ -83,9 +92,17 @@ function RatingCard(props) {
                             id='review-details'>
                                 <Typography>Review Details</Typography>
                             </AccordionSummary>
-                            <AccordionDetails>
-                                <Circles company={props.review} />
+                            <AccordionDetails className={classes.jobTitleBar}>
+                                <Typography variant='h6' component='span'>Job Title: {title}</Typography>
+                                    {employee ==='current' ? 
+                                        <Typography variant='h6' component='span'>Employment Status: Current</Typography> :
+                                        <Typography variant='h6' component='span'>Employment Status: Former</Typography> 
+                                    }
                             </AccordionDetails>
+                            <AccordionDetails>
+                                <Circles company={props.review} /> 
+                            </AccordionDetails>
+                            
                     </Accordion>
             </CardContent>
         </Card>
