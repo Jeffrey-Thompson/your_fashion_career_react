@@ -6,11 +6,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+// import MenuIcon from '@material-ui/icons/Menu';
 import Link from '@material-ui/core/Link';
 import TemporaryDrawer from '../Sidebar/Sidebar'
-import { useRecoilState } from "recoil";
-import { userState } from "../../recoil/atoms";
+// import { useRecoilState } from "recoil";
+// import { userState } from "../../recoil/atoms";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = () => {
     const classes = useStyles();
-    const [user, setUser] = useRecoilState(userState);
+    // const [user, setUser] = useRecoilState(userState);
     return (
         <Box className={classes.root} borderTop={5} borderColor='secondary.main'>
             <AppBar position='sticky' elevation={0}>
@@ -50,7 +50,7 @@ const Header = () => {
                         <Link href='/signin' className={classes.links}>
                             Sign In
                         </Link>
-                        <h1>user</h1>
+                        {/* <h1>{user}</h1> */}
                     </Button>
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                         <TemporaryDrawer/>
