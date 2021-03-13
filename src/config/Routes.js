@@ -16,7 +16,6 @@ const Routes = (props) => {
             <Route exact path='/' component={Home} />
             {/* <Route path='/signin' component={Signin}/> */}
             <Route path='/rate/:id' component={Rate} />
-            {/* <Route path='/companies/:id/rate' component={Rate} /> */}
             <Route path='/companies/:id' component={CompanyShow} />
             <Route path='/companies' component={AllCompanies} />
             <Route path='*' render={() => <h1>Maybe your career has taken a wrong turn or maybe you just typed something wrong. Either way this page doesn't exist.</h1>} />
