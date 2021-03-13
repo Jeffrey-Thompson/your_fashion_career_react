@@ -44,11 +44,11 @@ const Header = () => {
             <AppBar position='sticky' elevation={0}>
                 <Toolbar >
                     <Typography variant='h6' className= {classes.title}>
-                        YOUR FASHION CAREER
+                        FASHION JOB RATER
                     </Typography>
                     <Button color='inherit'>
-                        <Link href='/signin' className={classes.links}>
-                            Sign In
+                        <Link href='/companies' className={classes.links}>
+                            All Companies
                         </Link>
                         {/* <h1>{user}</h1> */}
                     </Button>

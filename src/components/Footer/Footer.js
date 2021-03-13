@@ -36,7 +36,7 @@ const Footer = () => {
             <Toolbar>
                 <Grid container>
                     <Grid item xs={12}>
-                        <Typography className={classes.title} variant='h6'>Your Fashion Career</Typography>
+                        <Typography className={classes.title} variant='h6'>Fashion Job Rater</Typography>
                     </Grid>
                     <Grid item xs={12} >
                         <ul className='link_list'>
