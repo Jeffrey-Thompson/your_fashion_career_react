@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
         background: theme.palette.primary.main,
         width: '700px',
-        marginBottom: '300px'
     },
     subheading: {
         fontFamily: 'Druk',
@@ -57,7 +56,7 @@ const Home = (props) => {
 //     })
 //   }
     return (
-        <Grid container direction='column' justify='center' alignItems='center'>
+        <Grid container direction='column' justify='center' alignItems='center' id='background'>
             <Grid item style={{height: '20vh'}}></Grid>
             <Grid item xs={7} >
                 <Box className={classes.root} border={2} >
@@ -68,7 +67,7 @@ const Home = (props) => {
                     </Button>
                 </Box>
             </Grid>
-            <Grid item style={{height: '20vh'}}></Grid>
+            <Grid item style={{height: '40vh'}}></Grid>
         </Grid>
     );
 };
