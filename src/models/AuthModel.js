@@ -1,4 +1,4 @@
-const URL = 'http://localhost:3001/auth'
+const URL = 'https://fashion-job-rater-api.herokuapp.com/auth'
 
 class AuthModel {
     static register = (user) => {

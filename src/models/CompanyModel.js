@@ -1,4 +1,4 @@
-const URL = 'http://localhost:3001/companies';
+const URL = 'https://fashion-job-rater-api.herokuapp.com/companies';
 
 class CompanyModel {
     static all = () => {

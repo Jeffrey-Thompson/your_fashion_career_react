@@ -1,4 +1,4 @@
-const URL = "http://localhost:3001/user";
+const URL = "https://fashion-job-rater-api.herokuapp.com/user";
 
 class UserModel {
   static show() {
